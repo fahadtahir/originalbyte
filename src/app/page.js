@@ -1,6 +1,20 @@
 'use client';
 import { motion } from 'framer-motion';
-import { Globe, Briefcase, Mail, ArrowRight, Code, Terminal, MonitorSmartphone, Server } from 'lucide-react';
+import {
+  ArrowRight,
+  Briefcase,
+  CalendarCheck,
+  CloudSun,
+  ExternalLink,
+  GitFork,
+  Globe,
+  Mail,
+  MonitorSmartphone,
+  Server,
+  Star,
+  Terminal,
+  Utensils,
+} from 'lucide-react;'
 import Navbar from '../components/Navbar';
 
 export default function Home() {
@@ -19,10 +33,39 @@ export default function Home() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
   };
 
+  const githubProfile = 'https://github.com/fahadtahir';
+
   const projects = [
-    { title: 'E-Commerce Platform', desc: 'A full-stack online store with payment integration.', tech: ['React', 'Node.js', 'MongoDB'] },
-    { title: 'Task Manager', desc: 'A collaborative project management tool.', tech: ['Next.js', 'PostgreSQL', 'Tailwind'] },
-    { title: 'Portfolio Website', desc: 'A modern, visually stunning developer portfolio.', tech: ['Next.js', 'Framer Motion', 'CSS'] }
+    {
+      title: 'Meteomatics Django React',
+      eyebrow: 'Weather API platform',
+      desc: 'A Django and React app that integrates Meteomatics weather APIs, supports custom coordinates, and provides searchable Saudi city weather data.',
+      repo: 'https://github.com/fahadtahir/meteomatics-django-react',
+      icon: <CloudSun size={40} />,
+      tech: ['Django', 'React', 'Python', 'MySQL', 'Meteomatics API'],
+      proof: ['Custom coordinate weather lookup', 'Saudi city autocomplete dataset', 'Postman-documented API workflow'],
+      stats: { stars: 1, forks: 0, language: 'Python + JavaScript' },
+    },
+    {
+      title: 'Labayh Node App',
+      eyebrow: 'Restaurant management APIs',
+      desc: 'A Node.js backend for restaurant management with authentication, MongoDB models, Swagger documentation, and a shared Postman collection.',
+      repo: 'https://github.com/fahadtahir/labayh-node-app',
+      icon: <Utensils size={40} />,
+      tech: ['Node.js', 'Express', 'MongoDB', 'Mongoose', 'Swagger'],
+      proof: ['JWT/passport authentication stack', 'Swagger API docs', 'Mongo restaurant/city data modeling'],
+      stats: { stars: 0, forks: 0, language: 'JavaScript' },
+    },
+    {
+      title: 'Restaurant Reservation Node.js',
+      eyebrow: 'Reservation backend',
+      desc: 'A restaurant reservation API using Node.js and PostgreSQL, covering users, roles, tables, available time slots, and token-based requests.',
+      repo: 'https://github.com/fahadtahir/restaurant-reservation-nodejs',
+      icon: <CalendarCheck size={40} />,
+      tech: ['Node.js', 'PostgreSQL', 'Express', 'JWT', 'Redis'],
+      proof: ['Role-aware user login flow', 'Table availability endpoints', 'Documented database structure'],
+      stats: { stars: 1, forks: 1, language: 'JavaScript' },
+    },
   ];
 
   return (
@@ -34,7 +77,7 @@ export default function Home() {
       <div className="bg-glow-2"></div>
 
       {/* Hero Section */}
-      <section className="section" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', paddingTop: '100px' }}>
+      <section id="about" className="section" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', paddingTop: '100px' }}>
         <div className="container">
           <motion.div
             variants={containerVariants}
@@ -64,9 +107,9 @@ export default function Home() {
             </motion.div>
 
             <motion.div variants={itemVariants} style={{ display: 'flex', gap: '1.5rem', marginTop: '3rem' }}>
-              <a href="#" style={{ color: 'var(--text-muted)' }}><Globe size={24} className="hover:text-primary transition-colors" /></a>
-              <a href="#" style={{ color: 'var(--text-muted)' }}><Briefcase size={24} className="hover:text-primary transition-colors" /></a>
-              <a href="#" style={{ color: 'var(--text-muted)' }}><Mail size={24} className="hover:text-primary transition-colors" /></a>
+              <a href={githubProfile} aria-label="GitHub profile" target="_blank" rel="noreferrer" style={{ color: 'var(--text-muted)' }}><Globe size={24} className="hover:text-primary transition-colors" /></a>
+              <a href="https://www.linkedin.com/in/fahad-tahir-a9a2016a/" aria-label="LinkedIn profile" target="_blank" rel="noreferrer" style={{ color: 'var(--text-muted)' }}><Briefcase size={24} className="hover:text-primary transition-colors" /></a>
+              <a href="mailto:fahadtahir94@gmail.com" aria-label="Email Fahad" style={{ color: 'var(--text-muted)' }}><Mail size={24} className="hover:text-primary transition-colors" /></a>
             </motion.div>
           </motion.div>
         </div>
@@ -101,20 +144,56 @@ export default function Home() {
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
             <h2 className="section-title">Featured Projects</h2>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '2rem' }}>
+            <div className="projects-intro">
+              <p>
+                Selected public GitHub work from <a href={githubProfile} target="_blank" rel="noreferrer">@fahadtahir</a>.
+              </p>
+            </div>
+
+            <div className="projects-grid">
               {projects.map((project, index) => (
-                <div key={index} className="glass-card" style={{ display: 'flex', flexDirection: 'column' }}>
-                  <div style={{ height: '200px', background: 'rgba(255,255,255,0.03)', borderRadius: '0.5rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <Code size={48} color="var(--text-muted)" opacity={0.5} />
+                <div key={project.title} className="glass-card project-card">
+                  <div className="project-visual" aria-hidden="true">
+                    <div className="project-icon">{project.icon}</div>
+                    <div className="repo-window">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </div>
+                    <p>{project.stats.language}</p>
                   </div>
-                  <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>{project.title}</h3>
-                  <p style={{ color: 'var(--text-muted)', marginBottom: '1.5rem', flexGrow: 1 }}>{project.desc}</p>
-                  <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-                    {project.tech.map((tech, i) => (
-                      <span key={i} style={{ fontSize: '0.75rem', padding: '0.25rem 0.75rem', background: 'rgba(99, 102, 241, 0.1)', color: 'var(--primary)', borderRadius: '1rem' }}>
-                        {tech}
-                      </span>
-                    ))}
+
+                  <div className="project-card-body">
+                    <p className="project-eyebrow">{project.eyebrow}</p>
+                    <h3>{project.title}</h3>
+                    <p>{project.desc}</p>
+
+                    <div className="project-stats" aria-label={`${project.title} GitHub stats`}>
+                      <span><Star size={14} /> {project.stats.stars}</span>
+                      <span><GitFork size={14} /> {project.stats.forks}</span>
+                      <span><Globe size={14} /> Public repo</span>
+                    </div>
+
+                    <ul className="project-proof">
+                      {project.proof.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+
+                    <div className="project-tech">
+                      {project.tech.map((tech) => (
+                        <span key={tech}>{tech}</span>
+                      ))}
+                    </div>
+
+                    <div className="project-actions">
+                      <a href={project.repo} target="_blank" rel="noreferrer" className="btn btn-outline">
+                        <GitFork size={17} /> View repo
+                      </a>
+                      <a href={`${project.repo}#readme`} target="_blank" rel="noreferrer" className="project-link">
+                        README <ExternalLink size={15} />
+                      </a>
+                    </div>
                   </div>
                 </div>
               ))}
