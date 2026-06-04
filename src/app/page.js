@@ -1,11 +1,6 @@
 'use client';
 import { motion } from 'framer-motion';
-import {
-  ArrowRight,
-  Briefcase,
-  CalendarCheck,
-  CloudSun,
-  ExternalLink,
+import { ArrowRight, Briefcase, CalendarCheck, CloudSun, ExternalLink,
   GitFork,
   Globe,
   Mail,
@@ -14,7 +9,7 @@ import {
   Star,
   Terminal,
   Utensils,
-} from 'lucide-react;'
+} from 'lucide-react';
 import Navbar from '../components/Navbar';
 
 export default function Home() {
