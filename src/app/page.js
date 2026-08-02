@@ -1,6 +1,6 @@
 'use client';
 import { motion } from 'framer-motion';
-import { ArrowRight, Briefcase, CalendarCheck, CloudSun, ExternalLink,
+import { ArrowRight, Briefcase, CalendarCheck, CloudSun, ExternalLink, ShoppingCart, ShoppingBag, FileText,
   GitFork,
   Globe,
   Mail,
@@ -40,6 +40,25 @@ export default function Home() {
       tech: ['Django', 'React', 'Python', 'MySQL', 'Meteomatics API'],
       proof: ['Custom coordinate weather lookup', 'Saudi city autocomplete dataset', 'Postman-documented API workflow'],
       stats: { stars: 1, forks: 0, language: 'Python + JavaScript' },
+    },
+    {
+      title: 'Roadmaster Website',
+      eyebrow: 'E-commerce',
+      desc: 'Magento 2.4.4 e-commerce website custom built with PHP 8.1, and integrated with 3rd party payment methods and Odoo ERP system',
+      repo: 'https://github.com/fahadtahir-rm/roadmaster',
+      icon: <ShoppingBag size={40} />,
+      tech: ['Magento 2.4', 'PHP', 'ElasticSearch', 'Redis', 'MySQL', 'Varnish Cache', 'Amazon Payfort'],
+      proof: ['Custom integrations with ApplePay, Tabby, Tamara', 'Saudi national address validation', 'Varnish cache implementation', 'Amasty Onestep Checkout with customisation'],
+      stats: { stars: 1, forks: 0, language: 'PHP' },
+    },    {
+      title: 'Document Approval (Internal)',
+      eyebrow: 'ERP / Internal',
+      desc: 'Node.js backend with React frontend: An internal online document approval workflow, complete with ER sketch and ERP mapping',
+      repo: 'https://hak.originalbyte.site/',
+      icon: <FileText size={40} />,
+      tech: ['Node.js', 'React', 'MySQL'],
+      proof: ['Sequential Approval', 'Employee rules / constraints'],
+      stats: { stars: 1, forks: 0, language: 'JavaScript' },
     },
     {
       title: 'Labayh Node App',
@@ -89,7 +108,7 @@ export default function Home() {
             </motion.h1>
 
             <motion.p variants={itemVariants} style={{ fontSize: '1.25rem', color: 'var(--text-muted)', marginBottom: '2.5rem', lineHeight: '1.6' }}>
-              I build exceptional and accessible digital experiences for the web. Specialized in e-commerce, React and Node.js architectures.
+              I build exceptional and accessible digital experiences for the web. Specialized in E-commerce, Python and Node.js architectures.
             </motion.p>
 
             <motion.div variants={itemVariants} style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
