@@ -28,6 +28,7 @@ export const metadata = {
     images: ['/og-image.png'],
   },
 };
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 export default function RootLayout({ children }) {
   return (
@@ -35,6 +36,7 @@ export default function RootLayout({ children }) {
       <body>
         {children}
       </body>
+      <GoogleAnalytics gaId="G-NCPSLH51PV" />
     </html>
   );
 }
